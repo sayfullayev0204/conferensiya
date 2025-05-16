@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-11 10:35+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\config\settings.py:136
+msgid "O'zbekcha"
+msgstr ""
+
+#: .\config\settings.py:137
+msgid "English"
+msgstr ""
+
+#: .\config\settings.py:138
+msgid "Русский"
+msgstr ""
+
+#: .\crispy-bootstrap5\tests\test_form_helper.py:122
+#: .\crispy-bootstrap5\tests\test_form_helper.py:132
+msgid "This field is required."
+msgstr ""
+
+#: .\crispy-bootstrap5\tests\test_layout.py:471
+msgid "i18n text"
+msgstr ""
+
+#: .\crispy-bootstrap5\tests\test_layout.py:473
+msgid "i18n legend"
+msgstr ""
+
+#: .\crispy-bootstrap5\tests\test_layout_objects.py:158
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\templates\home.html:11
+msgid "Chiqib ketish"
+msgstr "Logout"
+
+#: .\templates\home.html:15
+msgid "Saytga kirmagansiz"
+msgstr ""
+
+#: .\templates\home.html:16
+msgid "Login"
+msgstr ""
+
+#: .\templates\home.html:17
+msgid "Signup"
+msgstr ""
+
+#: .\templates\home.html:18
+msgid "password reset"
+msgstr ""
+
+#: .\templates\home.html:19
+msgid "postlar"
+msgstr ""
+
+#: .\templates\registration\login.html:15
+msgid "Kirish"
+msgstr ""

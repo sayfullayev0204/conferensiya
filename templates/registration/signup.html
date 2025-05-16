@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Ro'yxatdan o'tish {% endblock title %}
+
+{% block style %}
+    body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%; /* Kenglik 75% */
+            margin: 4em auto; /* Markazlashtirish */
+        }
+{% endblock style %}
+
+{% block content %}
+    <div class="container">
+    <h2>Ro'yxatdan o'tish</h2>
+    <form method="post">
+        {% csrf_token %}
+<!--        {{ form.label_tag }}-->
+        {{ form | crispy }}
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 50px">Ro'yxatdan o'tish</button></div>
+    </form>
+{% endblock %}

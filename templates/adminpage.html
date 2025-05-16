@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Admin sahifasi {% endblock title %}
+
+{% block content %}
+  <h2>Admin Paneli: Maqolalarni Tasdiqlash</h2>
+
+  {% if articles %}
+    <h3>Tasdiqlanmagan maqolalar</h3>
+    <ul>
+      {% for article in articles %}
+      <div class="card"  style="width: 28rem; margin: 2rem auto;">
+        <div class="card-header">
+            <span class="font-weight-bold"><a href=" {% url 'article_detail' article.pk %}"><h2>{{ article.title }}</h2></a></span>
+        </div>
+        {% if article.photo %}
+            <img src="{{ article.photo.url }}" class="card-img-top" alt="{{ article.title }}">
+        {% endif %}
+        <div class="card-body">
+            {{ article.summary }}... <a href=" {% url 'article_detail' article.pk %}">batafsil</a>
+        </div>
+        <div class="card-footer text-left text-muted">
+            <span class="text-muted">muallif {{ article.author | title }} . {{ article.date }}</span>
+        </div>
+        <br>
+          
+        <form method="POST" action="{% url 'superuser_page' %}">
+          {% csrf_token %}
+          <input type="hidden" name="article_id" value="{{ article.id }}">
+          <input type="hidden" name="action" value="approve">
+          <button class="btn btn-outline-primary" style="margin: 5px auto;" type="submit">Tasdiqlash</button>
+      </form>
+      <form method="POST" action="{% url 'superuser_page' %}" style="display: inline-block;" onsubmit="return confirm('Haqiqatan ham bekor qilinsinmi?');">
+          {% csrf_token %}
+          <input type="hidden" name="article_id" value="{{ article.id }}">
+          <button type="submit" name="action" value="delete" class="btn btn-danger">Bekor qilish</button>
+      </form>
+        </li>
+      <!-- {% endfor  %} -->
+    </ul>
+  {% else %}
+    <p>Hozirda tasdiqlanmagan maqolalar mavjud emas.</p>
+  {% endif %}
+  
+{% endblock content %}
+
+

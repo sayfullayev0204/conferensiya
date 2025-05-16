@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Yangi post {% endblock title %}
+
+{% block style %}
+    body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%; /* Kenglik 75% */
+            margin: 0 auto; /* Markazlashtirish */
+        }
+{% endblock style %}
+
+{% block content %}
+    <h1>Yangi maqola</h1>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {% comment %} {{ form.media }} {% endcomment %}
+        {{ form.content }}
+        {{ form | crispy }}
+        <button class="btn btn-success ml-2" type="submit">Joylash</button>
+    </form>
+{% endblock content %}

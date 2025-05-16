@@ -1,0 +1,84 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>KSTU</title>
+    <link rel="icon" type="image/png" href="https://kstu.uz/frontend/images/logo.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    {% if request.path != '/' %}
+        <style>
+            .content {
+                width: 75%;
+                margin: 0 auto; /* Markazlashtirish uchun */
+                justify-content: center;
+            }
+        </style>
+    {% endif %}
+</head>
+<body>
+    <!-- Navbar begin -->
+    {% if request.path != '/' %}
+        <nav class="navbar  bg-info-subtle sticky-top bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href=" {% url 'home' %}">
+                    <img src="https://hemis.tuitkf.uz/static/crop/2/1/250_250_90_212585174.jpg" width="auto" height="44" class="d-inline-block " class="justify-content: center;align-items: center">
+                    TATU
+                </a>
+                {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                    <a href="{% url 'superuser_page' %}"><button type="button" style="margin-left: 64rem;" class="btn btn-outline-primary position-relative">
+                        Request <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2"><span class="visually-hidden">unread messages</span></span>
+                    </button></a>
+                    {% endif %}
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #0B5ED7;">
+                        {{ user.username | title }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'article_create' %}">Maqola jo'natish</a></li>
+                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Kalit so'zni almashtirish</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Chiqish</a>
+                        <li><a class="dropdown-item" href="{% url 'article_list' %}">Maqolalar</a></li>
+
+                            <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                                {% csrf_token %}
+                            </form>
+                        </li>
+                            <li><a class="dropdown-item" href="{% url 'password_reset' %}">Password reset</a></li>
+                        
+                        </ul>
+                    </div>
+                {% else %}
+                    <form class="d-flex">
+                        <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary" style="margin-right: 10px;">Kirish</button></a>
+                        <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">Ro'yxatdan o'tish</button></a>
+                    </form>
+                {% endif %}
+            </div>
+        </nav>
+    {% endif %}
+    <!-- Navbar end -->
+    <main class="content">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak code fullscreen insertdatetime media nonbreaking save searchreplace table directionality emoticons template paste textcolor colorpicker',
+            toolbar: 'undo redo | styleselect | bold italic | underline | alignleft aligncenter alignright | bullist numlist | outdent indent | link image | print preview | code | fullscreen',
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
