@@ -33,7 +33,12 @@ SECRET_KEY = "django-insecure-di=+x755ahg%=kpwka$j%t72^@^2w3u_)6h#co0p!-o9$t+ac5
 # DEBUG = True  # Ishlatilayotgan muhitda True bo'lishi kerak
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']  # O'zingizning domeningizni qo'shing
+ALLOWED_HOSTS = ['127.0.0.1','conferensiya.onrender.com']  # O'zingizning domeningizni qo'shing
+CSRF_TRUSTED_ORIGINS = [
+    'https://6c95-95-214-210-134.ngrok-free.app',
+    'https://conferensiya.onrender.com',
+    'http://127.0.0.1:8000'
+]
 
 # Application definition
 
